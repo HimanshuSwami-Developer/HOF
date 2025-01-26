@@ -33,123 +33,78 @@ const Contact = () => {
   };
 
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+// const handleSubmit = async (event) => {
+//   event.preventDefault();
+//   setLoading(true);
+
+//   try {
+//     const formData = new FormData(event.target);
+//     formData.append("access_key", "5f5b91cf-2fc6-4dc3-9cd2-dc8838e33f09");
+
+//     const object = Object.fromEntries(formData);
+//     const json = JSON.stringify(object);
+
+//     const res = await fetch("https://api.web3forms.com/submit", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: json,
+//     });
+
+//     const data = await res.json();
+
+//     if (res.ok && data.success) {
+//       alert("Thank you. I will get back to you as soon as possible.");
+//       setForm({
+//         name: "",
+//         email: "",
+//         message: "",
+//       });
+//     } else {
+//       console.error("Error:", data);
+//       alert("Ahh, something went wrong. Please try again.");
+//     }
+//   } catch (error) {
+//     console.error("Fetch error:", error);
+//     alert("Ahh, something went wrong. Please try again.");
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
   setLoading(true);
 
   try {
-    const formData = new FormData(event.target);
-    formData.append("access_key", "5f5b91cf-2fc6-4dc3-9cd2-dc8838e33f09");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    const res = await fetch("https://api.web3forms.com/submit", {
+    const response = await fetch("http://localhost:5000/send-email", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: json,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      }),
     });
 
-    const data = await res.json();
+    const data = await response.json();
 
-    if (res.ok && data.success) {
-      alert("Thank you. I will get back to you as soon as possible.");
-      setForm({
-        name: "",
-        email: "",
-        message: "",
-      });
+    if (data.success) {
+      alert("Thank you. Your message has been sent!");
+      setForm({ name: "", email: "", message: "" });
     } else {
-      console.error("Error:", data);
-      alert("Ahh, something went wrong. Please try again.");
+      console.log("Backend error:", data);
+      alert("Oops! Something went wrong. Please try again.");
     }
   } catch (error) {
-    console.error("Fetch error:", error);
-    alert("Ahh, something went wrong. Please try again.");
+    console.error("Frontend error:", error);
+    alert("Oops! Something went wrong. Please try again.");
   } finally {
     setLoading(false);
   }
 };
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.target);
-  //   setLoading(true);
-
-  //   formData.append("access_key", "5f5b91cf-2fc6-4dc3-9cd2-dc8838e33f09");
-
-  //   const object = Object.fromEntries(formData);
-  //   const json = JSON.stringify(object);
-
-  //   const res = await fetch("https://api.web3forms.com/submit", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json"
-  //     },
-  //     body: json
-  //   }).then(
-  //     () => {
-  //       setLoading(false);
-  //       alert("Thank you. I will get back to you as soon as possible.");
-
-  //       setForm({
-  //         name: "",
-  //         email: "",
-  //         message: "",
-  //       });
-  //     },
-  //     (error) => {
-  //       setLoading(false);
-  //       console.error(error);
-
-  //       alert("Ahh, something went wrong. Please try again.");
-  //     }
-  //   );
-
-    // if (res.success) {
-    //   console.log("Success", res);
-    // }
-  // };
-
-//  var handleSubmit = (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-
-//     emailjs
-//       .send(
-//         'service_6y5vft7',
-//         'template_5g175sf',
-//         {
-//           from_name: form.name,
-//           to_name: "Aarti Rathi",
-//           from_email: form.email,
-//           to_email: "Himanshuswami2810@gmail.com",
-//           message: form.message,
-//         },
-//         'FMQ4a1hK5NSAkumfj',
-//       )
-//       .then(
-//         () => {
-//           setLoading(false);
-//           alert("Thank you. I will get back to you as soon as possible.");
-
-//           setForm({
-//             name: "",
-//             email: "",
-//             message: "",
-//           });
-//         },
-//         (error) => {
-//           setLoading(false);
-//           console.error(error);
-
-//           alert("Ahh, something went wrong. Please try again.");
-//         }
-//       );
-//   };
 
   return (
     <div
