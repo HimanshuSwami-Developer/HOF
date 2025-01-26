@@ -31,7 +31,7 @@ const ProjectCard = ({
         }}
         className='project-box bg-tertiary p-1 rounded-2xl sm:w-[400px] w-full'
       >
-        <div className='Box1 relative w-full h-[320px]'>
+        <div onClick={() => window.open(source_link, "_blank")} className='Box1 relative w-full h-[320px]'>
           <img
             src={image}
             alt='project_image'
@@ -54,7 +54,7 @@ const ProjectCard = ({
                 className='w-1/2 h-1/2 object-contain'
               />
             </div>
-            <div
+            {/* <div
               onClick={() => window.open(source_code_link, "_blank")}
               className='black-gradient w-10 h-10 m-2 rounded-full flex justify-center items-center cursor-pointer'
             >
@@ -63,7 +63,7 @@ const ProjectCard = ({
                 alt='source code'
                 className='w-1/2 h-1/2 object-contain'
               />
-            </div>
+            </div> */}
 
           </div>          
         </div>
@@ -114,8 +114,8 @@ const Project = () => {
   return (
     <>
       <motion.div whileInView={{ opacity: 1 , transform : 'none'}} variants={textVariant()}>
-        {/* <p className={`${styles.sectionSubText} `}>My work</p> */}
-        <h2 className={`${styles.sectionHeadText}`}>Our Products</h2>
+        <p className={`${styles.sectionSubText} `}>Our Work for Customer</p>
+        <h2 className={`${styles.sectionHeadText}`}>Our Projects</h2>
       </motion.div>
 
       <div className='project w-full flex'>

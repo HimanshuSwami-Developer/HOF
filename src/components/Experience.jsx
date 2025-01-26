@@ -20,7 +20,7 @@ const ExperienceCard = ({ experience }) => {
         color: "#fff",
       }}
       contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-      date={experience.date}
+      // date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
         <div className='flex justify-center items-center w-full h-full'>
@@ -38,7 +38,7 @@ const ExperienceCard = ({ experience }) => {
           className='text-secondary text-[16px] font-semibold'
           style={{ margin: 0 }}
         >
-          {experience.company_name}
+          {/* {experience.company_name} */}
         </p>
       </div>
 
@@ -51,9 +51,9 @@ const ExperienceCard = ({ experience }) => {
             {point}
           </li>
         ))}
-          <a href={experience.link} className="align-center flex justify-center blue-text-gradient" target="_blank">
+          {/* <a href={experience.link} className="align-center flex justify-center blue-text-gradient" target="_blank">
             LINK
-          </a>
+          </a> */}
       </ul>
     </VerticalTimelineElement>
   );
@@ -67,7 +67,7 @@ const Experience = () => {
           What I have done so far
         </p>
         <h2 className={`${styles.sectionHeadText}`}>
-          Work Experience.
+          Work Area.
         </h2>
       </motion.div>
 
