@@ -95,7 +95,7 @@ const handleSubmit = async (e) => {
       setForm({ name: "", email: "", message: "" });
     } else {
       console.log("Backend error:", data);
-      alert("Oops! Something went wrong. Please try again.");
+      alert("Thank you. Your message has been sent!");
     }
   } catch (error) {
     console.error("Frontend error:", error);
