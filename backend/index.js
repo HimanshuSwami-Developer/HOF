@@ -19,10 +19,11 @@ app.post("/send-email", async (req, res) => {
   });
 
   const mailOptions = {
-    from: email,
+    from:"Himanshuswami2810@gmail.com" ,
     to: "Himanshuswami2810@gmail.com", // Replace with recipient's email
     subject: `Message from ${name}`,
     text: message,
+    replyTo: email, 
   };
 
   try {
